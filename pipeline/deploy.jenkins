@@ -15,14 +15,14 @@ pipeline {
     stage('Stage 1') {
       steps {
         dir('docker') {
-	  sh 'docker build -f Dockerfile_base ../'
+	  sh 'docker build -f Dockerfile_base -t centos-pybase ../'
 	}	
       }
     }
     stage('Stage 2') {
       steps {
         dir('docker') {
-          sh 'docker build -f Dockerfile ../'
+          sh 'docker build -f Dockerfile -t chatterbox../'
         }
       }
     }
