@@ -23,7 +23,7 @@ pipeline {
     stage('Stage 2') {
       steps {
         dir('docker') {
-          sh 'docker build -f Dockerfile -t chatterbox../'
+          sh 'docker build -f Dockerfile -t chatterbox ../'
         }
       }
     }
