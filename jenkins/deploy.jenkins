@@ -1,0 +1,31 @@
+#!groovy
+
+properties([disableConcurrentBuilds()])
+
+
+pipeline {
+  agent {
+    label 'master'
+    }
+  triggers { pollSCM('* * * * *') }
+  options {
+    buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+    timestamps()
+    }
+  stages {
+    stage('Stage 1') {
+      steps {
+        dir('docker') {
+	  sh 'docker build -f Dockerfile_base -t centos-pybase ../'
+	}	
+      }
+    }
+    stage('Stage 2') {
+      steps {
+        dir('docker') {
+          sh 'docker build -f Dockerfile -t chatterbox ../'
+        }
+      }
+    }
+  }
+}
