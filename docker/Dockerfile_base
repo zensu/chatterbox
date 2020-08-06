@@ -1,9 +1,0 @@
-# chatterbox_base
-FROM centos:7
-RUN yum update -y
-RUN yum install vim net-tools wget gcc make sqlite3 zlib-devel libffi libffi-devel \
-bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel \
-readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel -y
-RUN rpm -qa openssl*
-ADD python3-install.sh /tmp/python3-install.sh
-RUN bash /tmp/python3-install.sh
